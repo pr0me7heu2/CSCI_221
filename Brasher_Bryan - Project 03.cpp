@@ -24,7 +24,7 @@ public:
     Fraction(int a, int b);
     // generate a fraction which is a/b
 
-    Fraction(int a);
+    explicit Fraction(int a);
     // generate a fraction which is a/1
 
     Fraction();
