@@ -20,6 +20,7 @@
  * If I were to follow this up with another version, I would institute stricter
  * user validation.*/
 
+
 #include <iostream>
 #include <cmath>
 #include <limits>
@@ -103,8 +104,8 @@ int main()
     // Test CDAccount::get_balance_at_maturity()
     cout << "***5***" << endl;
 
-    cout << "Balance at maturity for account1 is $" << account2.get_balance_at_maturity() << "." << endl;
-    cout << "Balance at maturity for account2 is $" << account1.get_balance_at_maturity() << "." << endl;
+    cout << "Balance at maturity for account1 is $" << account1.get_balance_at_maturity() << "." << endl;
+    cout << "Balance at maturity for account2 is $" << account2.get_balance_at_maturity() << "." << endl;
     cout << "\n";
 
     // Test CDAccount::get_interest_rate()
