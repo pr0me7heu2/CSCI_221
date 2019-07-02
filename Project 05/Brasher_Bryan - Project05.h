@@ -110,6 +110,8 @@ namespace FHSULINKEDLIST
         Item data;
         Node *link;
     };
+
+    typedef Node* NodePtr;  // typedef for node*
     
     // FUNCTIONS for the linked list toolkit
     size_t list_length(const Node* head_ptr);

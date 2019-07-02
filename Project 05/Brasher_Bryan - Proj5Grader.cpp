@@ -1,7 +1,7 @@
 // This is the grader file of project 5
 
 #include <iostream>
-#include "CSCI361Proj5.h"
+#include "Brasher_Bryan - Project05.h"
 
 using namespace std;
 using namespace FHSULINKEDLIST;
@@ -51,7 +51,7 @@ int main()
     cout << "Your points so far is " << totalScore << "\n\n";
     system("pause");
     cout << endl;
-    
+
     score = test4();
     if(score == 0)
         cout << "Test 4 failed\n";
@@ -170,37 +170,37 @@ int test2()
         else
             list_head_insert(list, i);
     } // now list contains 5, 3, 3, 1, 1
-    
+
     if(list_search(list, 2) != NULL)
     {
         cout << "list_search function doesn't work for not found case\n";
         return 0;
     }
-    
+
     if(list_search(list, 3) != list->link)
     {
         cout << "list_search function doesn't work for found case\n";
         return 0;
     }
-    
+
     cout << "list_search function passes the test\n";
-    
+
     if(list_occurrences(list, 3) != 2 || list_occurrences(list, 5) != 1 || list_occurrences(list, 2) != 0)
     {
         cout << "list_occurrences function doesn't work\n";
         return 0;
     }
-    
+
     cout << "list_occurrences function passes the test\n";
-    
+
     if(list_locate(list, 2) != list_search(list, 3) || list_locate(list, 6) != NULL)
     {
         cout << "list_locate function doesn't work\n";
         return 0;
     }
-    
+
     cout << "list_locate function passes the test\n";
-    
+
     return 1;
 }
 
@@ -213,7 +213,7 @@ int test3() // test list tail attach, and list tail remove functions 2 points
         cout << "list_tail_attach function doesn't work for empty list\n";
         return 0;
     }
-    
+
     list_tail_attach(list, 1);
     list_tail_attach(list, 2); // now list contains 0, 1, 2
     if(list->data != 0 || list->link->data != 1 || list->link->link->data != 2)
@@ -221,29 +221,29 @@ int test3() // test list tail attach, and list tail remove functions 2 points
         cout << "list_tail_attach function doesn't work for non-empty list\n";
         return 0;
     }
-    
+
     cout << "list_tail_attach function passes the test\n";
-    
+
     list_tail_remove(list); // now list contains 0, 1
     if(list->data != 0 || list->link->data != 1 || list_length(list) != 2)
     {
         cout << "list_head_remove function doesn't work\n";
         return 0;
     }
-    
+
     list_tail_remove(list);
     list_tail_remove(list); // now list is empty
-    
+
     if(list != NULL)
     {
         cout << "list_tail_remove function doesn't work for one node list\n";
         return 0;
     }
-    
+
     cout << "list_tail_remove function passes the test\n";
-    
+
     return 2;
-    
+
 }
 
 int test4()
@@ -259,14 +259,14 @@ int test4()
     for(int i = 1; i <= 4; i++)
         list_tail_attach(list, i);
     // list contains 1, 2, 3, 4
-    
+
     copy = list_copy_front(list, 3);
     if(list_length(copy) != 3 || copy->data != 1 || copy->link->data != 2 || copy->link->link->data != 3 )
     {
         cout << "list_copy_front function doesn't work\n";
         return 0;
     }
-    
+
     copy->link->data = 100;
     if(list->link->data == 100)
     {
@@ -280,23 +280,23 @@ int test4()
         cout << "list_copy_front function doesn't work\n";
         return 0;
     }
-    
+
     cout << "list_copy_front passes the test\n";
-    
+
     list_clear(list);
     for(int i = 1; i <= 3; i++)
         list_head_insert(list, i);
     // list contains 3, 2, 1
-    
+
     list_copy(list, copy);
     if(list_length(copy) != 3 || copy->data != 3 || copy->link->data != 2 || copy->link->link->data != 1 )
     {
         cout << "list_copy function doesn't work\n";
         return 0;
     }
-    
+
     cout << "list_copy function passes the test\n";
-    
+
     return 2;
-    
+
 }
