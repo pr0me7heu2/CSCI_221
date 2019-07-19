@@ -46,8 +46,10 @@ public:
     void setMinute(int newMin) throw(TimeFormatMistake);
     // sets minute value
     // throws exception for invalid newMin
-    void printTime();
+    void printTime(ostream& outs);
     // returns time in HH:HH or hh:hh AM/PM format to cout
+    friend ostream& operator <<(ostream& outs, const Time& printTime);
+    // overloads >> operator to output time in HH:HH or hh:hh AM/PM (redundant for printTime())
     void convertTime();
     // converts time object to opposite format
 private:
@@ -63,6 +65,8 @@ private:
 
 Time getTime() throw(TimeFormatMistake);
 // returns time object using user input
+// assumes that time is entered in 24 hour format
+// where 24 hour format uses a colon
 
 
 int main() {
@@ -77,7 +81,8 @@ int main() {
 
             userTime = getTime();
             userTime.convertTime();
-            userTime.printTime();
+            cout << userTime;
+            //userTime.printTime(cout);  //no longer needed with overloading of <<
 
 
             cout << "\nAgain? (y/n)" << endl;
@@ -163,17 +168,26 @@ void Time::setHour(int newHour) throw(TimeFormatMistake){
 }
 
 void Time::setMinute(int newMin) throw(TimeFormatMistake) {
-    isValid(hour, newMin);  //does not matter what is value of is12HR
+    isValid(hour, newMin, 0);  //does not matter what is value of is12HR
     minute = newMin;
 }
 
-void Time::printTime() {
+void Time::printTime(ostream& outs) {
     if (is12HR  && !PM)
-        cout << hour << ":" << minute << " AM";
+        outs << hour << ":" << minute << " AM";
     if (is12HR  && PM)
-        cout << hour << ":" << minute << " PM";
+        outs << hour << ":" << minute << " PM";
     if (!is12HR)
-        cout << hour << ":" << minute;
+        outs << hour << ":" << minute;
+}
+
+ostream& operator <<(ostream& outs, const Time& printTime) {
+    if (printTime.is12HR  && !printTime.PM)
+        outs << printTime.hour << ":" << printTime.minute << " AM";
+    if (printTime.is12HR  && printTime.PM)
+        outs << printTime.hour << ":" << printTime.minute << " PM";
+    if (!printTime.is12HR)
+        cout << printTime.hour << ":" << printTime.minute;
 }
 
 void Time::convertTime() {
