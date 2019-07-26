@@ -196,6 +196,11 @@ void Time::convertTime() {
         is12HR = false;
         PM = NULL;
     }
+    if (!is12HR && hour == 24) {  // case someone uses 24 to describe midnight
+        hour = hour - 12;
+        is12HR = true;
+        PM = false;
+    }
     if (!is12HR && hour > 12) {
         hour = hour - 12;
         is12HR = true;
@@ -209,6 +214,7 @@ void Time::convertTime() {
         is12HR = true;
         PM = false;
     }
+
 }
 
 TimeFormatMistake::TimeFormatMistake() : message("") {
