@@ -31,6 +31,7 @@ namespace BRASHERTEMPCLASSSET {
         ItemType* new_copy(); // returns pointer to array with each item in set and deallocate memory
         void operator = (const set<ItemType>& right_side);  // overloaded operator
                                                 // copies over corresponding member variables
+
         template<class T>  // not sure I understand WHY friends can't have the same template type
         friend ostream& operator <<(ostream& outs, const set<T>& object); // to facilitate printing of set
 
