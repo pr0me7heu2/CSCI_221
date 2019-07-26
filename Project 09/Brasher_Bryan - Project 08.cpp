@@ -45,14 +45,17 @@ int main() {
                 printLibrary(library);
                 break;
             case 4:
-                exit(0);
+                cout << "Not yet implemented." << endl;
+                break;
+            case 5:
+                cout << "Not yet implemented." << endl;
+                break;
+            case 6:
+                return 0;
             default:
                 cout << "Invalid entry.  Try again." << endl;
         }
     }
-
-
-    return 0;
 }
 
 void addBook(vector<Book> &lib) {
@@ -126,6 +129,8 @@ void printMenu() {
     cout << "** 1. Add a book        **" << endl;
     cout << "** 2. Remove a book     **" << endl;
     cout << "** 3. Show contents     **" << endl;
-    cout << "** 4. Quit              **" << endl;
+    cout << "** 4. Load library      **" << endl;
+    cout << "** 5. Save library     **" << endl;
+    cout << "** 6. Quit              **" << endl;
     cout << "**************************" << endl;
 }
