@@ -22,6 +22,10 @@ void sortLibrary(vector<Book> &lib);
 
 void printLibrary(vector<Book> &lib);
 
+void loadLibrary(vector<Book>& lib);
+
+void saveLibrary(vector<Book>& lib);
+
 void printMenu();
 
 int main() {
@@ -48,7 +52,7 @@ int main() {
                 cout << "Not yet implemented." << endl;
                 break;
             case 5:
-                cout << "Not yet implemented." << endl;
+                saveLibrary(library);
                 break;
             case 6:
                 return 0;
@@ -124,13 +128,37 @@ void sortLibrary(vector<Book> &lib) {
     sort(lib.begin(), lib.end());  // using generic sort function
 }
 
+void loadLibrary(vector<Book>& lib) {
+    // likely requires some kind of marking in the print fields
+    // to then recreate objects from each line of the saved file
+}
+
+void saveLibrary(vector<Book>& lib) {
+    string fileName;
+    cout << "Enter name of library: " << endl;
+    cin >> fileName;
+    ofstream outputFile;
+    outputFile.open(fileName);
+
+    sortLibrary(lib);
+
+    for (const auto & i : lib) {
+        outputFile << i;  // copies library to file
+    }
+
+    outputFile.close();
+
+    cout << "Library saved!" << endl;
+}
+
+
 void printMenu() {
     cout << "********LIBRARY***********" << endl;
     cout << "** 1. Add a book        **" << endl;
     cout << "** 2. Remove a book     **" << endl;
     cout << "** 3. Show contents     **" << endl;
     cout << "** 4. Load library      **" << endl;
-    cout << "** 5. Save library     **" << endl;
+    cout << "** 5. Save library      **" << endl;
     cout << "** 6. Quit              **" << endl;
     cout << "**************************" << endl;
 }
