@@ -39,7 +39,7 @@ int main() {
                 addBook(library);
                 break;
             case 2:
-                cout << "Not yet implemented." << endl;
+                removeBook(library);
                 break;
             case 3:
                 printLibrary(library);
@@ -76,6 +76,35 @@ void addBook(vector<Book> &lib) {
 void removeBook(vector<Book> &lib) {
     if (lib.empty()) {
         cout << "Library is empty." << endl;
+    }
+    else {
+        string author, title, year;
+
+        cout << "Enter author name (Last name, First Name):" << endl;
+        cin.ignore();  //clear \n from stream
+        getline(cin, author);
+
+        cout << "Enter title of the book to remove:" << endl;
+        getline(cin, title);
+
+        cout << "Enter year of publication:" << endl;
+        getline(cin, year);
+
+        Book targetBook(author,title,year);
+
+        vector<Book>::iterator it; //creates iterator
+        it = find(lib.begin(), lib.end(), targetBook);  //uses generic find function
+
+        if(it != lib.end()) {  //find returns .end() if not found
+            lib.erase(it); //erases book pointed to by it
+            cout << targetBook;
+            cout << "was removed from the library." << endl;
+        }
+
+        else {
+            cout << "That book was not found.  Check your input and try again." << endl;
+        }
+
     }
 }
 void printLibrary(vector<Book> &lib) {

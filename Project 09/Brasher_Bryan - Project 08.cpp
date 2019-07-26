@@ -38,8 +38,14 @@ namespace BRASHERBOOKS {
         return (book1.author < book2.author);
     }
 
-    ostream& operator <<(ostream& outs, const Book& book) {
+    ostream& operator <<(ostream& outs, const Book& book) { // outputs members separated by a space
         outs << book.author << " " << book.title << " " << book.year << endl;
         return outs;
+    }
+
+    bool operator ==(const Book& book1, const Book& book2) { // true if all members are equal
+        return( book1.author == book2.author &&
+        book1.title == book2.title &&
+        book1.year == book2.year);
     }
 }

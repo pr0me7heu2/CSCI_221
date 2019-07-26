@@ -27,6 +27,8 @@ namespace BRASHERBOOKS {
         // needed for sorting by author using lexicographical comparison
         friend ostream& operator <<(ostream& outs, const Book& book);
         // outputs author, title, and year in easily human readable format
+        friend bool operator ==(const Book& book1, const Book& book2);
+        // needed for removing; returns true if author, title, and year are identical
     private:
         string author, title, year;
     };
